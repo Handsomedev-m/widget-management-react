@@ -18,6 +18,12 @@ function App() {
       type: 'Buttons',
       valueName: 'value1',
       value: '0',
+    },
+    { id: 3,
+      name: 'widget1',
+      type: 'Buttons',
+      valueName: 'value1',
+      value: '0',
     }
   ])
   const updateValue = (val, index) => {
@@ -47,7 +53,11 @@ function App() {
     console.log(widgetTypeName)
     console.log(name)
     console.log(valueName)
-    let id = state[state.length - 1].id + 1;
+    let id;
+    if(state.length>=1){
+      id = state[state.length - 1].id + 1;
+    }else{id = 1;}
+      
     let newWidget = {
       id,
       name,
@@ -55,14 +65,22 @@ function App() {
       valueName,
       value: 0
     }
-    setState([
-      ...state,
-      newWidget
-    ]);
+    if(state.length>=1){
+      setState([
+        ...state,
+        newWidget
+      ]);
+    }else{
+      setState([
+        newWidget
+      ]);
+    }
+      
+    
   }
   return (
     <div className="App p-5">
-      <div className="border border-white">
+      <div className="border border-white mx-auto widget-width">
         <div className="state-and-widget-field d-flex">
           <div className="state-field col-7 p-3">
               {state.map((item, key) => (

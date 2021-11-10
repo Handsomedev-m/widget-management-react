@@ -16,3 +16,6 @@
 .space-line {
   white-space: pre-wrap;
 }
+.widget-width {
+  max-width: 1200px;
+}

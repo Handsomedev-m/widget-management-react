@@ -3,7 +3,7 @@ import { useState } from 'react';
 export default function Widget(props) {
     const decrease = (val, index) => {
         val = Number(val)-1;
-        console.log("dd", val)
+        if(val<0) val = 0;
         props.updateValue(val, index+1)
     }
     const increase = (val, index) => {
@@ -12,6 +12,7 @@ export default function Widget(props) {
     }
     const setVal = (val, index) => {
         val = Number(val);
+        if(val<0) val = 0;
         props.updateValue(val, index+1)
     }
     const deleteWidget = (index) => {
